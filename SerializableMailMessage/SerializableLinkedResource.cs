@@ -18,6 +18,7 @@ namespace S22.Mail
       ContentId = resource.ContentId;
       resource.ContentStream.Position = 0;
 
+      ContentStream = new MemoryStream();
       resource.ContentStream.CopyTo(ContentStream);
       ContentType = resource.ContentType;
       TransferEncoding = resource.TransferEncoding;
