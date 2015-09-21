@@ -16,9 +16,11 @@ namespace S22.Mail
     {
       ContentLink = resource.ContentLink;
       ContentId = resource.ContentId;
-      ContentStream = new MemoryStream();
-      resource.ContentStream.CopyTo(ContentStream);
       resource.ContentStream.Position = 0;
+
+      ContentBytes = ReadStream(resource.ContentStream);
+      ContentStream = new MemoryStream(ContentBytes);
+
       ContentType = resource.ContentType;
       TransferEncoding = resource.TransferEncoding;
     }
@@ -40,6 +42,8 @@ namespace S22.Mail
     /// </summary>
     /// <value>The content stream.</value>
     public Stream ContentStream { get; }
+
+    public byte[] ContentBytes { get; }
 
     /// <summary>
     ///   Gets or sets the type of the content.
@@ -63,7 +67,7 @@ namespace S22.Mail
       if (resource == null)
         return null;
 
-      var r = new LinkedResource(resource.ContentStream)
+      var r = new LinkedResource(new MemoryStream(resource.ContentBytes))
       {
         ContentId = resource.ContentId,
         ContentType = resource.ContentType,
@@ -81,6 +85,20 @@ namespace S22.Mail
     public static implicit operator SerializableLinkedResource(LinkedResource resource)
     {
       return resource == null ? null : new SerializableLinkedResource(resource);
+    }
+
+    private static byte[] ReadStream(Stream input)
+    {
+      var buffer = new byte[16 * 1024];
+      using (var ms = new MemoryStream())
+      {
+        int read;
+        while ((read = input.Read(buffer, 0, buffer.Length)) > 0)
+        {
+          ms.Write(buffer, 0, read);
+        }
+        return ms.ToArray();
+      }
     }
   }
 }
