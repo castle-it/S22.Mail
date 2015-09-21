@@ -328,7 +328,7 @@ namespace S22.Imap
       if (!string.IsNullOrEmpty(view.ContentId))
         builder.AppendLine("Content-Id: <" + view.ContentId + ">");
       if (view is Attachment)
-        builder.AppendLine("Content-Disposition: attachment");
+        builder.AppendLine($"Content-Disposition: attachment; filename=\"{((Attachment) view).Name}\"");
       builder.AppendLine();
       // Append the actual body part contents encoded as Base64
       using (var memstream = new MemoryStream())
