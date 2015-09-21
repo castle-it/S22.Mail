@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Specialized;
 using System.Net.Mail;
+using System.Net.Mime;
 using System.Text;
 
 namespace S22.Mail
@@ -30,6 +31,7 @@ namespace S22.Mail
         Bcc.Add(a);
       Body = m.Body;
       BodyEncoding = m.BodyEncoding;
+      BodyTransferEncoding = m.BodyTransferEncoding;
       CC = new SerializableMailAddressCollection();
       foreach (var a in m.CC)
         CC.Add(a);
@@ -81,6 +83,12 @@ namespace S22.Mail
     /// </summary>
     /// <value>The body encoding.</value>
     public Encoding BodyEncoding { get; set; }
+
+    /// <summary>
+    ///   Gets or sets the body transfer encoding.
+    /// </summary>
+    /// <value>The body transfer encoding.</value>
+    public TransferEncoding BodyTransferEncoding { get; }
 
     /// <summary>
     ///   Gets the cc.
@@ -176,6 +184,7 @@ namespace S22.Mail
         m.Bcc.Add(a);
       m.Body = message.Body;
       m.BodyEncoding = message.BodyEncoding;
+      m.BodyTransferEncoding = message.BodyTransferEncoding;
       foreach (var a in message.CC)
         m.CC.Add(a);
       m.DeliveryNotificationOptions = message.DeliveryNotificationOptions;
