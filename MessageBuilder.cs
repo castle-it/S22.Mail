@@ -115,7 +115,7 @@ namespace S22.Imap
     {
       var reader = new StringReader(header);
       var coll = new NameValueCollection();
-      string line, fieldname = null, fieldvalue = null;
+      string line, fieldname = null;
       while ((line = reader.ReadLine()) != null)
       {
         if (line == string.Empty)
@@ -132,7 +132,7 @@ namespace S22.Imap
         if (delimiter < 0)
           continue;
         fieldname = line.Substring(0, delimiter).Trim();
-        fieldvalue = line.Substring(delimiter + 1).Trim();
+        var fieldvalue = line.Substring(delimiter + 1).Trim();
         coll.Add(fieldname, fieldvalue);
       }
       return coll;
