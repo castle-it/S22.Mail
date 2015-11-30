@@ -188,16 +188,25 @@ namespace S22.Mail
       foreach (var a in message.CC)
         m.CC.Add(a);
       m.DeliveryNotificationOptions = message.DeliveryNotificationOptions;
-      m.From = message.From;
-      m.Headers.Add(message.Headers);
+        if (message.From != null)
+        {
+            m.From = message.From;
+        }
+        m.Headers.Add(message.Headers);
       m.HeadersEncoding = message.HeadersEncoding;
       m.IsBodyHtml = message.IsBodyHtml;
       m.Priority = message.Priority;
-      m.ReplyTo = message.ReplyTo;
-      foreach (var a in message.ReplyToList)
+        if (message.ReplyTo != null)
+        {
+            m.ReplyTo = message.ReplyTo;
+        }
+        foreach (var a in message.ReplyToList)
         m.ReplyToList.Add(a);
-      m.Sender = message.Sender;
-      m.Subject = message.Subject;
+        if (message.Sender != null)
+        {
+            m.Sender = message.Sender;
+        }
+        m.Subject = message.Subject;
       m.SubjectEncoding = message.SubjectEncoding;
       foreach (var a in message.To)
         m.To.Add(a);
