@@ -5,14 +5,15 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("S22.Mail")]
-[assembly: AssemblyDescription("Extends the MailMessage class of the System.Net.Mail namespace")]
+[assembly: AssemblyTitle("S22.Mail.Properties")]
+[assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("None")]
-[assembly: AssemblyProduct("S22.Mail")]
-[assembly: AssemblyCopyright("Copyright © Torben Könke 2012")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("S22.Mail.Properties")]
+[assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
+
 
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 
@@ -20,7 +21,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("80170819-144f-44dc-a486-e7865307ca2f")]
+[assembly: Guid("7fd9ff1e-2dde-4d5c-b88b-229f64434a5f")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -29,8 +30,5 @@ using System.Runtime.InteropServices;
 //      Build Number
 //      Revision
 //
-// You can specify all the values or you can default the Build and Revision Numbers 
-// by using the '*' as shown below:
-// [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.*")]
+[assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
